@@ -1,0 +1,112 @@
+styled
+import styled from "styled-components";
+
+
+export const  Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+`
+export const  Title = styled.h1`
+  font-size: 40px;
+  text-transform: uppercase;
+`
+
+
+export const  ContainerCard = styled.div`
+  width: 100%;
+
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+`
+export const  Cards = styled.div`
+  border: 1px solid #fff;
+  border-radius: 8px;
+  margin: 10px 2px;
+  transition: all 0.5s ease-in-out;
+
+  img {
+    width: 100%;
+    height: 250px;
+    border-radius: 8px 8px 0 0;
+    opacity: .5;
+    transition: all 0.5s ease-in;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &:hover {
+    transform: translateY(-15px);
+  }
+`
+export const  Info = styled.div`
+  h3 {
+    text-transform: uppercase;
+  }
+
+`
+
+codigo
+
+import React from "react";
+import axios from "axios";
+
+import { Cards,Container,ContainerCard,Info, Title} from "./style"
+
+const API = axios.create({
+  baseURL: "https://rickandmortyapi.com/api/character"
+});
+export default class App extends React.Component {
+  state = {
+    info: []
+  };
+
+  //uma função assyncrona que por baixo dos panos ela recebe promessa implicita como resposta
+  //vai pegar a API, MAPEAR, E ATUALIZAR O ESTADO COM AS INFORMAÇÕES DA API
+  pegarPersonagens = async () => {
+    const resposta = await API.get();
+    console.log(resposta);
+
+    //mapear array results da API
+    const itensApi = resposta.data.results.map((item) => {
+      return {
+        ...item // spread operator
+      };
+    });
+
+    this.setState({
+      info: itensApi
+    });
+  };
+
+  componentDidMount() {
+    this.pegarPersonagens();
+  }
+
+  render() {
+    return (
+      <Container>
+        <Title>Rick and Morty Api</Title>
+        <ContainerCard>
+          {this.state.info.map((item) => (
+            <Cards>
+              <img src={item.image} alt="" />
+              <Info>
+                <h3>{item.name}</h3>
+                <p>{item.species}</p>
+              </Info>
+            </Cards>
+          ))}
+        </ContainerCard>
+      </Container>
+    );
+  }
+}
+
