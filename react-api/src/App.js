@@ -35,9 +35,9 @@ class App extends Component {
         const resposta = await Api.get();
         //essa varia roda o await que vai esperar a promessa ser retornada, ou seja, promessa = api.
 
-        console.log(resposta.data.results); //pra ver se ta funcionando. mostrando os dados da api
+        console.log(resposta.data.results); //, ativa a função pra ver se ta funcionando. mostrando os dados da api
 
-        // nova variavel que acessa e mapeia a seccao de result onde estao guardados os personagem
+        // nova variavel que acessa e mapeia função  onde estao guardados os personagem
         // acessa a resposta
         const itens = resposta.data.results.map((item) =>{
             return{
@@ -47,9 +47,8 @@ class App extends Component {
         })
         //trazendo a Api para dentro da array informaçoes 
         this.setState({
-            informacoes : itens
-
-            // manipulando  o estado a arrray q vai receber os itens da api
+            informacoes : itens //nome ds conts que pega os objetos array precisam ser incluídos em um ano
+            // manipulando  o estado da array q vai receber os itens da api
 
         })
     };
