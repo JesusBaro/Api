@@ -1,4 +1,4 @@
-
+//API E USESTATE
 
 //aula 20 
 //API 
@@ -67,7 +67,8 @@ class App extends Component {
 
        <div>
         {this.state.informacoes.map((item) =>(
-         <div>
+            // o que for mapeado tem que ser envolvido por uma div 
+         <div> 
             <h2> {item.name}</h2>
                 <img src= {item.image} alt = ""/>
                 <h3>{item.status}</h3>
@@ -84,3 +85,77 @@ class App extends Component {
 }
 
 export default App;
+
+
+
+//ESSE CONTEUDO ESTA NA AULA3
+//AULA Use State
+
+// import React, {useState} from "react";
+// import jesus from "./jesus.JPG";
+// import baro from "./baro.JPG";
+// import styled from "styled-components";
+
+// export default function App(){
+//  //sintax
+//  const[titulo,setTitulo]  = useState("Boa noite");
+// //  ternário sintaxe
+// // condição ? caso verdade : caso falso  
+
+// //Essa const cria um state (refri) e atualiza o estado dessa const com set (setRefri), useState é o método que gerenciam essa atualizaçao
+// // os parenteses são os parametros onde indicamos o valor inicial
+// const [refri,setRefri] = useState(baro); //valor inicial
+ 
+//  const Div1 =styled.div`
+//  border:solid black;
+//  width:40vw;
+//  display:flex;
+//  justify-content:space-evenly;
+//  `
+
+// const ImgPrincipal =styled.img`
+// width:20vw;
+// `
+// const ImgTransicao =styled.img`
+// width:10vw;
+// `
+// const Main = styled.main`
+// height:100vh;
+// background-color:purple;
+// display:flex;
+// justify-content:space-evenly;
+// flex-direction:column;
+// align-items:center;`
+
+
+//     return(
+//         <Main>
+//         <h1>{titulo} </h1>
+//          {/* //lógica simples em uma linha */}
+//         <button onClick={()=>{setTitulo("oi")}}> atualizando </button>
+//         <button onClick={()=>{setTitulo("cansado")}}> atualizando para cansado  </button>
+
+//         {/* ternario */}
+//         <button onClick={()=>{setTitulo(titulo === "Boa Noite"? "boa tarde" :"oi")}}> atualizandopara ternario </button>
+       
+//         {/* imagem principal */}
+//         <ImgPrincipal  src={refri} alt=""/>
+//         <ImgPrincipal  src={refri} alt=""/>
+
+//         {/* imagens que com uma fnçao anonima atualizam o estado de cada */}
+//         <Div1>
+//         {/* atualizando o state diretamente com o evento de click nas imagens  */}
+//         <ImgTransicao onClick={()=>{setRefri(jesus)}} src={jesus} alt=""/> 
+//         <ImgTransicao onClick={()=>{setRefri(baro)}} src={baro} alt=""/>
+
+//        { <ImgTransicao onClick={()=>{setRefri(baro)}} src={baro} alt=""/>&&<Main></Main>}
+
+//         </Div1>
+   
+//         </Main>
+//     )
+// }
+
+
+// //  {this.state.ligado && 
+// //             <BoxBtn >oi</BoxBtn>}
